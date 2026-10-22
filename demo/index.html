@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>astro-kit — today's panchang</title>
+<style>
+  :root{--bg:#0f1115;--card:#171a21;--ink:#e7e9ee;--mut:#9aa3b2;--line:#252a34;--acc:#22c55e}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header,main,footer{max-width:680px;margin:0 auto;padding:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:10px 0}
+  label{font-size:13px;color:var(--mut)}
+  input{padding:8px;border-radius:8px;border:1px solid var(--line);background:#0d1014;color:var(--ink);width:110px}
+  table{width:100%;border-collapse:collapse}
+  td{padding:6px 0;border-bottom:1px solid var(--line)}
+  td:last-child{text-align:right;font-weight:600}
+  .mut{color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Today's panchang</h1>
+  <p class="mut">Computed in your browser with astro-kit. Times are approximate.</p>
+</header>
+<main>
+  <div class="card">
+    <label>Latitude <input id="lat" value="28.6139"></label>
+    <label>Longitude <input id="lon" value="77.2090"></label>
+    <label>TZ offset (h) <input id="tz" value="5.5"></label>
+  </div>
+  <div class="card"><table id="out"></table></div>
+</main>
+<footer class="mut">© 2026 Dr Sohil Momin · astro-kit</footer>
+<script src="../astro-kit.js"></script>
+<script>
+  function h2(x){ var h=Math.floor(x), m=Math.round((x-h)*60); if(m===60){h++;m=0;} return (h<10?"0":"")+h+":"+(m<10?"0":"")+m; }
+  function render(){
+    var lat=parseFloat(document.getElementById("lat").value), lon=parseFloat(document.getElementById("lon").value), tz=parseFloat(document.getElementById("tz").value);
+    var now=new Date();
+    var p=Astro.panchang(now, {lat:lat, lon:lon});
+    var rows=[
+      ["Date", now.toLocaleDateString()],
+      ["Tithi", p.tithi.paksha+" "+p.tithi.name+" ("+p.tithi.index+"/30)"],
+      ["Nakshatra", p.nakshatra.name+" pada "+p.nakshatra.pada],
+      ["Yoga", p.yoga.name],
+      ["Karana", p.karana.name],
+      ["Moon", p.moonPhase.name+" ("+Math.round(p.moonPhase.illumination*100)+"% lit)"],
+      ["Sunrise", p.sun.polar ? p.sun.polar : h2(p.sun.sunriseUTC+tz)+" local"],
+      ["Sunset", p.sun.polar ? p.sun.polar : h2(p.sun.sunsetUTC+tz)+" local"],
+      ["Solar noon", p.sun.polar ? "—" : h2(p.sun.transitUTC+tz)+" local"]
+    ];
+    document.getElementById("out").innerHTML = rows.map(function(r){ return "<tr><td class='mut'>"+r[0]+"</td><td>"+r[1]+"</td></tr>"; }).join("");
+  }
+  ["lat","lon","tz"].forEach(function(id){ document.getElementById(id).addEventListener("input", render); });
+  render();
+</script>
+</body>
+</html>
