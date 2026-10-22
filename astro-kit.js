@@ -14,7 +14,11 @@
  *
  * MIT License. (c) 2026 Dr Sohil Momin.
  */
-(function (root) {
+(function (root, factory) {
+  var api = factory();
+  root.Astro = api;                                   // browser global / globalThis
+  if (typeof module === "object" && module.exports) module.exports = api;  // Node import
+})(typeof globalThis !== "undefined" ? globalThis : this, function () {
   "use strict";
   var A = { version: "0.1.0" };
   var D2R = Math.PI / 180, R2D = 180 / Math.PI;
@@ -129,7 +133,9 @@
     return { index: idx + 1, name: NAKSHATRA[idx], longitude: sid, pada: Math.floor(frac(sid / (360 / 27)) * 4) + 1 };
   };
   A.yoga = function (jde) {
-    var s = norm360(A.moonLongitude(jde) + A.sunLongitude(jde));
+    // yoga uses the SIDEREAL sum of the sun and moon longitudes
+    var ayan = A.ayanamsa(jde);
+    var s = norm360((A.sunLongitude(jde) - ayan) + (A.moonLongitude(jde) - ayan));
     var idx = Math.floor(s / (360 / 27));
     return { index: idx + 1, name: YOGA[idx] };
   };
@@ -162,5 +168,9 @@
     return out;
   };
 
-  root.Astro = A;
-})(typeof globalThis !== "undefined" ? globalThis : this);
+  /* ---------- helpers for consumers ---------- */
+  A.fromJd = function (jd) { return new Date((jd - 2440587.5) * 86400000); };
+  A.tables = { tithi: TITHI, nakshatra: NAKSHATRA, yoga: YOGA, karanaMovable: KARANA_MOVABLE };
+
+  return A;
+});
