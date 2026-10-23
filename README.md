@@ -1,6 +1,7 @@
 # astro-kit
 
 [![live](https://img.shields.io/badge/live-online-22c55e)](https://drsamonline.github.io/astro-kit/)
+[![test](https://github.com/drsamonline/astro-kit/actions/workflows/test.yml/badge.svg)](https://github.com/drsamonline/astro-kit/actions/workflows/test.yml)
 [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
 **The shared astronomy core for drsamonline apps.** Zero dependencies. The
