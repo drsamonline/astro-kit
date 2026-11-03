@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" role="img" aria-label="A diagram of what this kit does">
-  <rect width="320" height="180" rx="14" fill="none" stroke="#9aa3b2" stroke-width="1" opacity=".45"/>
-  <g fill="none" stroke="#b8862a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-<circle cx="160" cy="90" r="16" fill="#7d8797" stroke="none"/><ellipse cx="160" cy="90" rx="86" ry="34" stroke="#7d8797"/><ellipse cx="160" cy="90" rx="62" ry="60" stroke="#7d8797" opacity=".6" transform="rotate(-24 160 90)"/><circle cx="238" cy="74" r="5" fill="#7d8797" stroke="none"/>
+  <rect width="320" height="180" rx="14" fill="none" stroke="#c9cfdd" stroke-width="1" opacity=".45"/>
+  <g fill="none" stroke="#a97b1e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="160" cy="90" r="16" fill="#101728" stroke="none"/><ellipse cx="160" cy="90" rx="86" ry="34" stroke="#101728"/><ellipse cx="160" cy="90" rx="62" ry="60" stroke="#101728" opacity=".6" transform="rotate(-24 160 90)"/><circle cx="238" cy="74" r="5" fill="#101728" stroke="none"/>
   </g>
 </svg>
