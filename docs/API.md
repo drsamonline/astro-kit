@@ -8,19 +8,20 @@ that is not there.
 
 ```js
 <script src="astro-kit.js"></script>
-Astro.palette  // or: const Astro = require('./astro-kit.js')
+Astro.jd(...)
+// or: const Astro = require('./astro-kit.js')
 ```
 
 ## The surface (15 entries)
 
 | Name | Arguments | What it does |
 |---|---|---|
-| `Astro.jd` | `(when)` | ---------- time ---------- */ Julian Day from a JS Date (interpreted as UTC) or {y,m,d,h}. */ |
+| `Astro.jd` | `(when)` | Julian Day from a JS Date (interpreted as UTC) or {y,m,d,h}. |
 | `Astro.jdFromDate` | `(dt)` | — |
-| `Astro.sunLongitude` | `(jde)` | ---------- the sun (Meeus ch. 25) ---------- */ |
+| `Astro.sunLongitude` | `(jde)` | ---------- the sun (Meeus ch. 25) ---------- |
 | `Astro.moonLongitude` | `(jde)` | — |
-| `Astro.ayanamsa` | `(jde)` | ---------- ayanamsa (Lahiri, approximate) ---------- */ |
-| `Astro.sunriseSunset` | `(dateUTC, lat, lon)` | ---------- sunrise / sunset (standard sunrise equation) ---------- */ |
+| `Astro.ayanamsa` | `(jde)` | ---------- ayanamsa (Lahiri, approximate) ---------- |
+| `Astro.sunriseSunset` | `(dateUTC, lat, lon)` | — |
 | `Astro.elongation` | `(jde)` | — |
 | `Astro.tithi` | `(jde)` | — |
 | `Astro.nakshatra` | `(jde)` | — |
@@ -28,7 +29,7 @@ Astro.palette  // or: const Astro = require('./astro-kit.js')
 | `Astro.karana` | `(jde)` | — |
 | `Astro.moonPhase` | `(jde)` | — |
 | `Astro.panchang` | `(when, opts)` | — |
-| `Astro.fromJd` | `(jd)` | ---------- helpers for consumers ---------- */ |
+| `Astro.fromJd` | `(jd)` | — |
 | `Astro.tables` | `()` | — |
 
 ## Notes
