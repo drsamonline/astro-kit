@@ -18,9 +18,9 @@ Astro.jd(...)
 |---|---|---|
 | `Astro.jd` | `(when)` | Julian Day from a JS Date (interpreted as UTC) or {y,m,d,h}. |
 | `Astro.jdFromDate` | `(dt)` | — |
-| `Astro.sunLongitude` | `(jde)` | ---------- the sun (Meeus ch. 25) ---------- |
+| `Astro.sunLongitude` | `(jde)` | — |
 | `Astro.moonLongitude` | `(jde)` | — |
-| `Astro.ayanamsa` | `(jde)` | ---------- ayanamsa (Lahiri, approximate) ---------- |
+| `Astro.ayanamsa` | `(jde)` | — |
 | `Astro.sunriseSunset` | `(dateUTC, lat, lon)` | — |
 | `Astro.elongation` | `(jde)` | — |
 | `Astro.tithi` | `(jde)` | — |
